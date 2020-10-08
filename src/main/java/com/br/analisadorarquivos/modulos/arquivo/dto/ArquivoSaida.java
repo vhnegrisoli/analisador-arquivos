@@ -77,7 +77,7 @@ public class ArquivoSaida {
 
     public String gerarTextoArquivoSaida(String arquivoReferencia) {
         return
-            gerarLinhaArquivo("Arquivo de referência: ", DEZESSETE_ESPACOS, arquivoReferencia)
+            gerarLinhaArquivo("Arquivo de referência:", DEZESSETE_ESPACOS, arquivoReferencia)
                 .concat(
                     gerarLinhaArquivo("Total de vendedores na entrada:", OITO_ESPACOS, valueOf(totalVendedoresEntrada)))
                 .concat(
