@@ -1,4 +1,4 @@
-package com.br.analisadorarquivos.modulos.dados.dto;
+package com.br.analisadorarquivos.modulos.arquivo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
+import static com.br.analisadorarquivos.modulos.comum.util.StringUtil.validarLinhasComApenasTresItens;
 
 @Data
 @Builder
@@ -25,6 +26,7 @@ public class Cliente {
             .of(linha.split(SEPARADOR))
             .filter(linhaTratada -> !linhaTratada.equals(CLIENTE))
             .collect(Collectors.toList());
+        validarLinhasComApenasTresItens(dadosLinha);
         return Cliente
             .builder()
             .cnpj(Long.parseLong(dadosLinha.get(INDICE_CLIENTE_CNPJ)))

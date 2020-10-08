@@ -1,9 +1,9 @@
-package com.br.analisadorarquivos.modulos.tratamento;
+package com.br.analisadorarquivos.modulos.arquivo.service;
 
-import com.br.analisadorarquivos.modulos.dados.dto.ArquivoSaida;
-import com.br.analisadorarquivos.modulos.dados.dto.Cliente;
-import com.br.analisadorarquivos.modulos.dados.dto.Venda;
-import com.br.analisadorarquivos.modulos.dados.dto.Vendedor;
+import com.br.analisadorarquivos.modulos.arquivo.dto.ArquivoSaida;
+import com.br.analisadorarquivos.modulos.arquivo.dto.Cliente;
+import com.br.analisadorarquivos.modulos.arquivo.dto.Venda;
+import com.br.analisadorarquivos.modulos.arquivo.dto.Vendedor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

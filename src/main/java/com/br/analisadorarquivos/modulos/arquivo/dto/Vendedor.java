@@ -1,4 +1,4 @@
-package com.br.analisadorarquivos.modulos.dados.dto;
+package com.br.analisadorarquivos.modulos.arquivo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
+import static com.br.analisadorarquivos.modulos.comum.util.StringUtil.validarLinhasComApenasTresItens;
 
 @Data
 @Builder
@@ -25,6 +26,7 @@ public class Vendedor {
             .of(linha.split(SEPARADOR))
             .filter(linhaTratada -> !linhaTratada.equals(VENDEDOR))
             .collect(Collectors.toList());
+        validarLinhasComApenasTresItens(dadosLinha);
         return Vendedor
             .builder()
             .cpf(Long.parseLong(dadosLinha.get(INDICE_VENDEDOR_CPF)))

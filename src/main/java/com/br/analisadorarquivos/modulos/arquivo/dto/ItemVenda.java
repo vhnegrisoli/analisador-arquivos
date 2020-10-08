@@ -1,4 +1,4 @@
-package com.br.analisadorarquivos.modulos.dados.dto;
+package com.br.analisadorarquivos.modulos.arquivo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
+import static com.br.analisadorarquivos.modulos.comum.util.StringUtil.validarLinhasComApenasTresItens;
 
 @Data
 @Builder
@@ -32,6 +33,7 @@ public class ItemVenda {
         var itens = Stream
             .of(itemDaVenda.split(SEPARADOR_ITEM_VENDA))
             .collect(Collectors.toList());
+        validarLinhasComApenasTresItens(itens);
         return ItemVenda
             .builder()
             .itemId(Integer.parseInt(itens.get(INDICE_ITEM_VENDA_ID)))

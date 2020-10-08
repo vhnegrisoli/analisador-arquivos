@@ -25,5 +25,13 @@ public interface Constantes {
     Integer INDICE_ITEM_VENDA_PRECO = 2;
     String ITEM_VENDA_COLCHETES_DIREITA = "[";
     String ITEM_VENDA_COLCHETES_ESQUERDA = "]";
-    String SEPARADOR_SAIDA = ",";
+    String QUEBRA_DE_LINHA = "\n";
+    String ESPACO_EM_BRANCO = " ";
+    Integer OITO_ESPACOS = 8;
+    Integer NOVE_ESPACOS = 9;
+    Integer DEZ_ESPACOS = 10;
+    Integer ONZE_ESPACOS = 11;
+    Integer DEZESSETE_ESPACOS = 17;
+    Integer VINTE_E_CINCO_ESPACOS = 25;
+    Integer TAMANHO_LINHA_DADOS = 3;
 }

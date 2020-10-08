@@ -1,9 +1,8 @@
-package com.br.analisadorarquivos.modulos.processamento;
+package com.br.analisadorarquivos.modulos.arquivo.service;
 
 import com.br.analisadorarquivos.config.DiretoriosProperties;
 import com.br.analisadorarquivos.modulos.comum.enums.EResultadoProcessamento;
-import com.br.analisadorarquivos.modulos.dados.dto.ArquivoSaida;
-import com.br.analisadorarquivos.modulos.tratamento.ArquivoTratamentoService;
+import com.br.analisadorarquivos.modulos.arquivo.dto.ArquivoSaida;
 import lombok.Cleanup;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;

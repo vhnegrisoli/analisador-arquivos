@@ -1,6 +1,6 @@
 package com.br.analisadorarquivos.config;
 
-import com.br.analisadorarquivos.modulos.processamento.ArquivoProcessamentoService;
+import com.br.analisadorarquivos.modulos.arquivo.service.ArquivoProcessamentoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

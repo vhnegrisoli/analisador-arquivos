@@ -1,4 +1,4 @@
-package com.br.analisadorarquivos.modulos.dados.dto;
+package com.br.analisadorarquivos.modulos.arquivo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 import java.util.Comparator;
 import java.util.List;
 
-import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.SEPARADOR_SAIDA;
+import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
+import static java.lang.String.valueOf;
 
 @Data
 @Builder
@@ -42,6 +43,7 @@ public class ArquivoSaida {
         return distinto
             ? (int) vendedores
             .stream()
+            .map(Vendedor::getNome)
             .distinct()
             .count()
             : vendedores.size();
@@ -51,6 +53,7 @@ public class ArquivoSaida {
         return distinto
             ? (int) clientes
             .stream()
+            .map(Cliente::getNome)
             .distinct()
             .count()
             : clientes.size();
@@ -72,33 +75,28 @@ public class ArquivoSaida {
             .getVendedorNome();
     }
 
-    private String gerarCabecalhoArquivoSaida() {
-        return String.join(
-            SEPARADOR_SAIDA,
-            "ARQUIVO_REFERENCIA",
-            "TOTAL_VENDEDORES_ENTRADA",
-            "TOTAL_VENDEDORES_DISTINTOS",
-            "TOTAL_CLIENTES_ENTRADA",
-            "TOTAL_CLIENTES_DISTINTOS",
-            "ID_VENDA_MAIS_CARA",
-            "PIOR_VENDEDOR\n"
-        );
-    }
-
-    private String gerarLinhasArquivoSaida(String arquivoReferencia) {
-        return String.join(SEPARADOR_SAIDA,
-            arquivoReferencia,
-            String.valueOf(totalVendedoresEntrada),
-            String.valueOf(totalVendedoresDistintosEntrada),
-            String.valueOf(totalClientesEntrada),
-            String.valueOf(totalClientesDistintosEntrada),
-            String.valueOf(idVendaMaisCara),
-            piorVendedor.concat("\n")
-        );
-    }
-
     public String gerarTextoArquivoSaida(String arquivoReferencia) {
-        return gerarCabecalhoArquivoSaida()
-            .concat(gerarLinhasArquivoSaida(arquivoReferencia));
+        return
+            gerarLinhaArquivo("Arquivo de referência: ", DEZESSETE_ESPACOS, arquivoReferencia)
+                .concat(
+                    gerarLinhaArquivo("Total de vendedores na entrada:", OITO_ESPACOS, valueOf(totalVendedoresEntrada)))
+                .concat(
+                    gerarLinhaArquivo("Total de vendedores distintos:", NOVE_ESPACOS, valueOf(totalVendedoresDistintosEntrada)))
+                .concat(
+                    gerarLinhaArquivo("Total de clientes na entrada:", DEZ_ESPACOS, valueOf(totalClientesEntrada)))
+                .concat(
+                    gerarLinhaArquivo("Total de clientes distintos:", ONZE_ESPACOS, valueOf(totalClientesDistintosEntrada)))
+                .concat(
+                    gerarLinhaArquivo("ID da venda mais cara:", DEZESSETE_ESPACOS, valueOf(idVendaMaisCara)))
+                .concat(
+                    gerarLinhaArquivo("Pior vendedor:", VINTE_E_CINCO_ESPACOS, piorVendedor));
+    }
+
+    private String gerarLinhaArquivo(String cabecalho, Integer quantidadeEspacos, String valor) {
+        return cabecalho.concat(gerarEspacosDeFormatacao(quantidadeEspacos).concat(valor).concat(QUEBRA_DE_LINHA));
+    }
+
+    private String gerarEspacosDeFormatacao(Integer quantidadeDeEspacos) {
+        return ESPACO_EM_BRANCO.repeat(quantidadeDeEspacos);
     }
 }
