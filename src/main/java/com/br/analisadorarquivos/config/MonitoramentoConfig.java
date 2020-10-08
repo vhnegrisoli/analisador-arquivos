@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.nio.file.FileSystems;
 import java.nio.file.Paths;
@@ -18,7 +17,6 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 import static org.springframework.util.ObjectUtils.isEmpty;
 
 @Slf4j
-@EnableAsync
 @Configuration
 public class MonitoramentoConfig {
 

@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+app-config:
+  diretorios:
+    data: src/test/resources/data
+    diretorio-in: ${app-config.diretorios.data}/in
+    diretorio-out: ${app-config.diretorios.data}//out
+    diretorio-falha: ${app-config.diretorios.data}//falha
+    diretorio-processado: ${app-config.diretorios.data}//processado
