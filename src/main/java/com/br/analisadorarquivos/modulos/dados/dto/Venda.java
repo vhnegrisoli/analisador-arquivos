@@ -6,6 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
+import static com.br.analisadorarquivos.modulos.dados.dto.ItemVenda.gerarListaItensDaVenda;
 
 @Data
 @Builder
@@ -18,6 +23,15 @@ public class Venda {
     private String vendedorNome;
 
     public static Venda gerarDadosVenda(String linha) {
-        return new Venda();
+        var dadosLinha = Stream
+            .of(linha.split(SEPARADOR))
+            .filter(linhaTratada -> !linhaTratada.equals(VENDA))
+            .collect(Collectors.toList());
+        return Venda
+            .builder()
+            .vendaId(Integer.parseInt(dadosLinha.get(INDICE_VENDA_ID)))
+            .itensDeVenda(gerarListaItensDaVenda(dadosLinha.get(INDICE_VENDA_ITENS)))
+            .vendedorNome(dadosLinha.get(INDICE_VENDA_VENDEDOR_NOME))
+            .build();
     }
 }

@@ -5,6 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,7 +21,21 @@ public class ItemVenda {
     private Integer quantidade;
     private Double preco;
 
-    public static ItemVenda gerarDadosItemVenda(String linha) {
-        return new ItemVenda();
+    public static List<ItemVenda> gerarListaItensDaVenda(String linha) {
+        return Stream.of(linha.split(SEPARADOR_LISTA_ITEM_VENDA))
+            .map(ItemVenda::gerarDadosItemVenda)
+            .collect(Collectors.toList());
+    }
+
+    private static ItemVenda gerarDadosItemVenda(String itemDaVenda) {
+        var itens = Stream
+            .of(itemDaVenda.split(SEPARADOR_ITEM_VENDA))
+            .collect(Collectors.toList());
+        return ItemVenda
+            .builder()
+            .itemId(Integer.parseInt(itens.get(INDICE_ITEM_VENDA_ID)))
+            .quantidade(Integer.parseInt(itens.get(INDICE_ITEM_VENDA_QUANTIDADE)))
+            .preco(Double.parseDouble(itens.get(INDICE_ITEM_VENDA_PRECO)))
+            .build();
     }
 }
