@@ -16,7 +16,7 @@ import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
 @AllArgsConstructor
 public class Cliente {
 
-    private Integer cnpj;
+    private Long cnpj;
     private String nome;
     private String areaNegocio;
 
@@ -27,7 +27,7 @@ public class Cliente {
             .collect(Collectors.toList());
         return Cliente
             .builder()
-            .cnpj(Integer.parseInt(dadosLinha.get(INDICE_CLIENTE_CNPJ)))
+            .cnpj(Long.parseLong(dadosLinha.get(INDICE_CLIENTE_CNPJ)))
             .nome(dadosLinha.get(INDICE_CLIENTE_NOME))
             .areaNegocio(dadosLinha.get(INDICE_CLIENTE_AREA_NEGOCIO))
             .build();

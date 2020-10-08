@@ -21,17 +21,27 @@ public class Venda {
     private Integer vendaId;
     private List<ItemVenda> itensDeVenda;
     private String vendedorNome;
+    private Double totalVenda;
 
     public static Venda gerarDadosVenda(String linha) {
         var dadosLinha = Stream
             .of(linha.split(SEPARADOR))
             .filter(linhaTratada -> !linhaTratada.equals(VENDA))
             .collect(Collectors.toList());
+        var itensVenda = gerarListaItensDaVenda(dadosLinha.get(INDICE_VENDA_ITENS));
         return Venda
             .builder()
             .vendaId(Integer.parseInt(dadosLinha.get(INDICE_VENDA_ID)))
-            .itensDeVenda(gerarListaItensDaVenda(dadosLinha.get(INDICE_VENDA_ITENS)))
+            .itensDeVenda(itensVenda)
             .vendedorNome(dadosLinha.get(INDICE_VENDA_VENDEDOR_NOME))
+            .totalVenda(calcularTotalVenda(itensVenda))
             .build();
+    }
+
+    public static Double calcularTotalVenda(List<ItemVenda> itensVenda) {
+        return itensVenda
+            .stream()
+            .mapToDouble(item -> item.getPreco() * item.getQuantidade())
+            .sum();
     }
 }

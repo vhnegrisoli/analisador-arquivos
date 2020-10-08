@@ -16,7 +16,7 @@ import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
 @AllArgsConstructor
 public class Vendedor {
 
-    private Integer cpf;
+    private Long cpf;
     private String nome;
     private Double salario;
 
@@ -27,7 +27,7 @@ public class Vendedor {
             .collect(Collectors.toList());
         return Vendedor
             .builder()
-            .cpf(Integer.parseInt(dadosLinha.get(INDICE_VENDEDOR_CPF)))
+            .cpf(Long.parseLong(dadosLinha.get(INDICE_VENDEDOR_CPF)))
             .nome(dadosLinha.get(INDICE_VENDEDOR_NOME))
             .salario(Double.parseDouble(dadosLinha.get(INDICE_VENDEDOR_SALARIO)))
             .build();

@@ -9,7 +9,7 @@ public interface Constantes {
     String SEPARADOR_ITEM_VENDA = "-";
     String VAZIO = "";
     String BARRA = "/";
-    Integer INDICE_INICIAL_TIPO_DADO_STRING = 3;
+    Integer INDICE_INICIAL_TIPO_DADO_STRING = 0;
     Integer INDICE_FINAL_TIPO_DADO_STRING = 3;
     Integer INDICE_VENDEDOR_CPF = 0;
     Integer INDICE_VENDEDOR_NOME = 1;
@@ -23,5 +23,7 @@ public interface Constantes {
     Integer INDICE_ITEM_VENDA_ID = 0;
     Integer INDICE_ITEM_VENDA_QUANTIDADE = 1;
     Integer INDICE_ITEM_VENDA_PRECO = 2;
-
+    String ITEM_VENDA_COLCHETES_DIREITA = "[";
+    String ITEM_VENDA_COLCHETES_ESQUERDA = "]";
+    String SEPARADOR_SAIDA = ",";
 }

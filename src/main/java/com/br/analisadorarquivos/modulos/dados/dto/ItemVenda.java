@@ -22,6 +22,7 @@ public class ItemVenda {
     private Double preco;
 
     public static List<ItemVenda> gerarListaItensDaVenda(String linha) {
+        linha = validarExistenciaDeColchetes(linha);
         return Stream.of(linha.split(SEPARADOR_LISTA_ITEM_VENDA))
             .map(ItemVenda::gerarDadosItemVenda)
             .collect(Collectors.toList());
@@ -37,5 +38,15 @@ public class ItemVenda {
             .quantidade(Integer.parseInt(itens.get(INDICE_ITEM_VENDA_QUANTIDADE)))
             .preco(Double.parseDouble(itens.get(INDICE_ITEM_VENDA_PRECO)))
             .build();
+    }
+
+    private static String validarExistenciaDeColchetes(String linha) {
+        if (linha.contains(ITEM_VENDA_COLCHETES_DIREITA)) {
+            linha = linha.replace(ITEM_VENDA_COLCHETES_DIREITA, VAZIO);
+        }
+        if (linha.contains(ITEM_VENDA_COLCHETES_ESQUERDA)) {
+            linha = linha.replace(ITEM_VENDA_COLCHETES_ESQUERDA, VAZIO);
+        }
+        return linha;
     }
 }
