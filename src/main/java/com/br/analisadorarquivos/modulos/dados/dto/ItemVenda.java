@@ -14,4 +14,8 @@ public class ItemVenda {
     private Integer itemId;
     private Integer quantidade;
     private Double preco;
+
+    public static ItemVenda gerarDadosItemVenda(String linha) {
+        return new ItemVenda();
+    }
 }

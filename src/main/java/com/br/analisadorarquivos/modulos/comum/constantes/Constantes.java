@@ -7,4 +7,6 @@ public interface Constantes {
     Character SEPARADOR = 'ç';
     String VAZIO = "";
     String BARRA = "/";
+    Integer INDICE_INICIAL_TIPO_DADO_STRING = 3;
+    Integer INDICE_FINAL_TIPO_DADO_STRING = 3;
 }

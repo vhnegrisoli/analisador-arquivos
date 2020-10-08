@@ -59,8 +59,8 @@ public class ArquivoProcessamentoService {
             ));
             try {
                 FileUtils.copyDirectory(arquivoEntrada, arquivoSaida);
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException ex) {
+                log.error("Erro ao  tentar copiar arquivo.", ex);
             }
         }
     }
