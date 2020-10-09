@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/vhnegrisoli/analisador-arquivos.svg?branch=master)](https://travis-ci.org/vhnegrisoli/analisador-arquivos)
 
+![Logo do projeto](https://github.com/vhnegrisoli/analisador-arquivos/blob/master/imagens%20e%20gifs/logo.png)
+
 Projeto para ler, analisar, processar e tratar arquivos conforme um padrão específico.
 
 ## Resumo
