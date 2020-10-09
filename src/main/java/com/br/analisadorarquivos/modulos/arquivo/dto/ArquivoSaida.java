@@ -1,5 +1,6 @@
 package com.br.analisadorarquivos.modulos.arquivo.dto;
 
+import com.br.analisadorarquivos.modulos.comum.exception.ValidacaoException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
 import static java.lang.String.valueOf;
+import static org.springframework.util.ObjectUtils.isEmpty;
 
 @Data
 @Builder
@@ -39,7 +41,7 @@ public class ArquivoSaida {
     }
 
     private static Integer calcularTotalVendedoresEntrada(List<Vendedor> vendedores,
-                                                   boolean distinto) {
+                                                          boolean distinto) {
         return distinto
             ? (int) vendedores
             .stream()
@@ -76,6 +78,7 @@ public class ArquivoSaida {
     }
 
     public String gerarTextoArquivoSaida(String arquivoReferencia) {
+        validarCamposExistentes(arquivoReferencia);
         return
             gerarLinhaArquivo("Arquivo de referência:", DEZESSETE_ESPACOS, arquivoReferencia)
                 .concat(
@@ -98,5 +101,19 @@ public class ArquivoSaida {
 
     private String gerarEspacosDeFormatacao(Integer quantidadeDeEspacos) {
         return ESPACO_EM_BRANCO.repeat(quantidadeDeEspacos);
+    }
+
+    private void validarCamposExistentes(String arquivoReferencia) {
+        if (isEmpty(arquivoReferencia)) {
+            throw new ValidacaoException("É necessário informar o arquivo de referência.");
+        }
+        if (isEmpty(totalVendedoresEntrada)
+            || isEmpty(totalVendedoresDistintosEntrada)
+            || isEmpty(totalClientesEntrada)
+            || isEmpty(totalClientesDistintosEntrada)
+            || isEmpty(idVendaMaisCara)
+            || isEmpty(piorVendedor)) {
+            throw new ValidacaoException("É necessário que todos os campos existam para gerar o arquivo de resposta.");
+        }
     }
 }

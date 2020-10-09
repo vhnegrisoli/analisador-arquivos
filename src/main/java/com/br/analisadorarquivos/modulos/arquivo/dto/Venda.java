@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
+import static com.br.analisadorarquivos.modulos.comum.util.ExceptionUtil.gerarExceptionParaErroDeConversaoLinhasEmObjeto;
 import static com.br.analisadorarquivos.modulos.comum.util.StringUtil.validarLinhasComApenasTresItens;
 
 @Data
@@ -30,16 +31,21 @@ public class Venda {
             .collect(Collectors.toList());
         validarLinhasComApenasTresItens(dadosLinha);
         var itensVenda = ItemVenda.gerarListaItensDaVenda(dadosLinha.get(INDICE_VENDA_ITENS));
-        return Venda
-            .builder()
-            .vendaId(Integer.parseInt(dadosLinha.get(INDICE_VENDA_ID)))
-            .itensDeVenda(itensVenda)
-            .vendedorNome(dadosLinha.get(INDICE_VENDA_VENDEDOR_NOME))
-            .totalVenda(calcularTotalVenda(itensVenda))
-            .build();
+        try {
+            return Venda
+                .builder()
+                .vendaId(Integer.parseInt(dadosLinha.get(INDICE_VENDA_ID)))
+                .itensDeVenda(itensVenda)
+                .vendedorNome(dadosLinha.get(INDICE_VENDA_VENDEDOR_NOME))
+                .totalVenda(calcularTotalVenda(itensVenda))
+                .build();
+        } catch (Exception ex) {
+            gerarExceptionParaErroDeConversaoLinhasEmObjeto(ex);
+            return null;
+        }
     }
 
-    private static Double calcularTotalVenda(List<ItemVenda> itensVenda) {
+    public static Double calcularTotalVenda(List<ItemVenda> itensVenda) {
         return itensVenda
             .stream()
             .mapToDouble(item -> item.getPreco() * item.getQuantidade())

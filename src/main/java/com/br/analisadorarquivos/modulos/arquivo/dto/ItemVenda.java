@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
+import static com.br.analisadorarquivos.modulos.comum.util.ExceptionUtil.gerarExceptionParaErroDeConversaoLinhasEmObjeto;
 import static com.br.analisadorarquivos.modulos.comum.util.StringUtil.validarLinhasComApenasTresItens;
 
 @Data
@@ -34,12 +35,17 @@ public class ItemVenda {
             .of(itemDaVenda.split(SEPARADOR_ITEM_VENDA))
             .collect(Collectors.toList());
         validarLinhasComApenasTresItens(itens);
-        return ItemVenda
-            .builder()
-            .itemId(Integer.parseInt(itens.get(INDICE_ITEM_VENDA_ID)))
-            .quantidade(Integer.parseInt(itens.get(INDICE_ITEM_VENDA_QUANTIDADE)))
-            .preco(Double.parseDouble(itens.get(INDICE_ITEM_VENDA_PRECO)))
-            .build();
+        try {
+            return ItemVenda
+                .builder()
+                .itemId(Integer.parseInt(itens.get(INDICE_ITEM_VENDA_ID)))
+                .quantidade(Integer.parseInt(itens.get(INDICE_ITEM_VENDA_QUANTIDADE)))
+                .preco(Double.parseDouble(itens.get(INDICE_ITEM_VENDA_PRECO)))
+                .build();
+        } catch (Exception ex) {
+            gerarExceptionParaErroDeConversaoLinhasEmObjeto(ex);
+            return null;
+        }
     }
 
     private static String validarExistenciaDeColchetes(String linha) {

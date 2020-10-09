@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.br.analisadorarquivos.modulos.comum.constantes.Constantes.*;
+import static com.br.analisadorarquivos.modulos.comum.util.ExceptionUtil.gerarExceptionParaErroDeConversaoLinhasEmObjeto;
 import static com.br.analisadorarquivos.modulos.comum.util.StringUtil.validarLinhasComApenasTresItens;
 
 @Data
@@ -27,11 +28,16 @@ public class Cliente {
             .filter(linhaTratada -> !linhaTratada.equals(CLIENTE))
             .collect(Collectors.toList());
         validarLinhasComApenasTresItens(dadosLinha);
-        return Cliente
-            .builder()
-            .cnpj(Long.parseLong(dadosLinha.get(INDICE_CLIENTE_CNPJ)))
-            .nome(dadosLinha.get(INDICE_CLIENTE_NOME))
-            .areaNegocio(dadosLinha.get(INDICE_CLIENTE_AREA_NEGOCIO))
-            .build();
+        try {
+            return Cliente
+                .builder()
+                .cnpj(Long.parseLong(dadosLinha.get(INDICE_CLIENTE_CNPJ)))
+                .nome(dadosLinha.get(INDICE_CLIENTE_NOME))
+                .areaNegocio(dadosLinha.get(INDICE_CLIENTE_AREA_NEGOCIO))
+                .build();
+        } catch (Exception ex) {
+            gerarExceptionParaErroDeConversaoLinhasEmObjeto(ex);
+            return null;
+        }
     }
 }

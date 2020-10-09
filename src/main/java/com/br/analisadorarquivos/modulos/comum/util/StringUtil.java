@@ -10,9 +10,14 @@ import static org.springframework.util.ObjectUtils.isEmpty;
 public class StringUtil {
 
     public static String recuperarTipoDeDados(String linha) {
-        return !isEmpty(linha.substring(INDICE_INICIAL_TIPO_DADO_STRING, INDICE_FINAL_TIPO_DADO_STRING))
-            ? linha.substring(INDICE_INICIAL_TIPO_DADO_STRING, INDICE_FINAL_TIPO_DADO_STRING)
-            : VAZIO;
+        if (isEmpty(linha)) {
+            throw new ValidacaoException("A linha não pode ser vazia.");
+        }
+        var tipoDados = linha.substring(INDICE_INICIAL_TIPO_DADO_STRING, INDICE_FINAL_TIPO_DADO_STRING);
+        if (!List.of(VENDEDOR, CLIENTE, VENDA).contains(tipoDados)) {
+            throw new ValidacaoException("O início da linha não pertence a um tipo de dados válido.");
+        }
+        return tipoDados;
     }
 
     public static void validarLinhasComApenasTresItens(List<String> dadosLinha) {
