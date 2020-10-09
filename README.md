@@ -1,5 +1,7 @@
 # Projeto: Analisador de Arquivos
 
+[![Build Status](https://travis-ci.org/vhnegrisoli/analisador-arquivos.svg?branch=master)](https://travis-ci.org/vhnegrisoli/analisador-arquivos)
+
 Projeto para ler, analisar, processar e tratar arquivos conforme um padrão específico.
 
 ## Resumo
@@ -147,6 +149,12 @@ Maven
 ### Code Style
 
 O projeto utiliza o checkstyle da Google e o plugin PMD, sendo assim, cada comando do maven irá rodar o checkstyle.
+
+### Continuous Integration (CI)
+
+Foi feito um deploy da aplicação no Travis-CI para validar o build da aplicação e a execução dos testes.
+
+A aplicação passou com 38 testes rodados com sucesso, foi adicionada a badge de `build passing` ao início deste README.
 
 ### Instalação
 
