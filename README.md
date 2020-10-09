@@ -188,7 +188,7 @@ A aplicação inicializará em:
 http://localhost:8080
 ```
 
-## Executando testes automatizados (unitários e de integração)
+## Executando testes unitários e de integração
 
 Foram escritos testes de integração e testes unitários utilizando o JUnit5 e o Mockito.
 
@@ -197,6 +197,76 @@ Para rodar apenas os testes:
 ```
 mvn test
 ```
+
+### Cobertura de testes
+
+Utilizando a IDE IntelliJ IDEA da JetBrains, foram rodados os testes unitários
+e de integração com a opção de coverage para verificar qual foi a cobertura total de testes.
+
+#### Cobertura geral
+
+![Cobertura geral]()
+
+A cobertura geral do projeto ficou em 95% de classes testadas (21 de 22 classes), 86% em métodos testados (80 de 92 métodos) 
+e 87% de llinhas testadas (280 de 319).
+
+#### Cobertura dos módulos específicos da aplicação 
+
+![Cobertura módulos]()
+
+A aplicação é divida em dois módulos principais, o módulo de arquivo e de comum, contendo classes utilitárias.
+O módulo de arquivo ficou com 100%"de cobertura de classes (12 de 12 classes testadas), 88% de cobertura de métodos
+(64 de 72 métodos) e 92% de cobertura de linhas (225 de 244 linhas).
+
+O módulo comum ficou com 100% de cobertura de classes (6 de 6 classes), 100% de métodos (10 de 10 métodos) e 100% de linhas (47 de 47 linhas).
+ 
+#### Cobertura das classes de DTOs
+
+As classes de DTOs são responsáveis por processar as linhas em dados para os objetos Java.
+
+![Cobertura DTOs]()
+
+A DTO ArquivoSaida teve 100% de cobertura de classes (2 de 2 classes), 95% de cobertura de métodos (19 de 20 métodos) e 98% de cobertura
+de linhas (70 de 71 linhas).
+
+A DTO Cliente teve 100% de cobertura de classes (2 de 2 classes), 77% de cobertura de métodos (7 de 9 métodos) e 86% de cobertura
+de linhas (19 de 22 linhas).
+
+A DTO ItemVenda teve 100% de cobertura de classes (2 de 2 classes), 90% de cobertura de métodos (10 de 11 métodos) e 93% de cobertura
+de linhas (28 de 30 linhas).
+
+A DTO Venda teve 100% de cobertura de classes (2 de 2 classes), 81% de cobertura de métodos (9 de 11 métodos) e 89% de cobertura
+de linhas (26 de 29 linhas).
+
+A DTO Vendedor teve 100% de cobertura de classes (2 de 2 classes), 77% de cobertura de métodos (7 de 9 métodos) e 86% de cobertura
+de linhas (19 de 22 linhas).
+
+#### Cobertura das classes de Service
+
+Existem duas classes service, a de processamento e tratamento de arquivos.
+
+![Cobertura Services]()
+
+A classe ArquivoProcessamentoService teve 100% de cobertura de classes (1 de 1 classes), 100% de cobertura de métodos (9 de 9 métodos) e 86% de cobertura
+de linhas (45 de 52 linhas).
+
+A classe ArquivoTratamentoService teve 100% de cobertura de classes (1 de 1 classes), 100% de cobertura de métodos (3 de 3 métodos) e 100% de cobertura
+de linhas (18 de 18 linhas).
+
+#### Cobertura das classes utilitárias
+
+Existem três classes utilitárias, uma de String, uma de Exception e uma de Arquivo.
+
+![Cobertura Utils]()
+
+A classe ArquivoUtil teve 100% de cobertura de classes (1 de 1 classes), 100% de cobertura de métodos (3 de 3 métodos) e 100% de cobertura
+de linhas (11 de 11 linhas).
+
+A classe ExceptionUtil teve 100% de cobertura de classes (1 de 1 classes), 100% de cobertura de métodos (1 de 1 métodos) e 100% de cobertura
+de linhas (1 de 1 linhas).
+
+A classe StringUtil teve 100% de cobertura de classes (1 de 1 classes), 100% de cobertura de métodos (2 de 2 métodos) e 100% de cobertura
+de linhas (9 de 9 linhas).
 
 ## Autores
 
@@ -207,4 +277,3 @@ mvn test
 ## Licença
 
 Este projeto possui a licença do MIT. Veja mais em: [LICENSE.txt](LICENSE.txt)
-
