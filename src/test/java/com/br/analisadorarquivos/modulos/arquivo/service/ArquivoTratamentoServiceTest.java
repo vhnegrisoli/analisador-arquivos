@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @ExtendWith(MockitoExtension.class)
-public class ArquivoTrartamentoServiceTest {
+public class ArquivoTratamentoServiceTest {
 
     @InjectMocks
     private ArquivoTratamentoService tratamentoService;

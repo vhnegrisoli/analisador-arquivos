@@ -13,7 +13,7 @@ import static com.br.analisadorarquivos.modulos.arquivo.mocks.VendedorMocks.umVe
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-public class ArquivoSaidaMocks {
+public class ArquivoSaidaTest {
 
     @Test
     @DisplayName("Deve gerar dados do arquivo de saída quando dados estiverem válidos")
