@@ -24,7 +24,7 @@ utilitárias, de serviços e de DTOs para armazenamento dos dados.
 * **Mockito**
 * **AssertJ**
 
-### Por quê do uso dessas tecnologias?
+### Por quê utilizei essas tecnologias?
 
 O Spring Boot foi escolhido devido a toda a possibilidade de desenvolvimento
 escolhido pelo ecossistema Spring, definindo bons padrões para o projeto,
@@ -92,6 +92,49 @@ Abaixo será possível visualizar no GIF como funciona a execução do programa:
 
 ![Demonstração](https://github.com/vhnegrisoli/analisador-arquivos/blob/master/imagens%20e%20gifs/Demo%20Aplica%C3%A7%C3%A3o.gif)
 
+### Exemplo de arquivos
+
+O arquivo de entrada conterá linhas separadas pelo caractere `ç` e 
+terá um indicador inicial para cada tipo de dados iniciado em: `001`, `002` e `003`.
+
+* Linhas que iniciam com `001` serão referentes aos dados do vendedor. 
+* Linhas que iniciam com `002` serão referentes aos dados do cliente. 
+* Linhas que iniciam com `003` serão referentes aos dados da venda. 
+
+O arquivo de entrada será neste formato:
+
+```
+001ç1234567891234çPedroç50000
+001ç3245678865434çPauloç40000.99
+002ç2345675434544345çJose da SilvaçRural
+002ç2345675433444345çEduardo PereiraçRural
+003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro
+003ç08ç[1-34-10,2-33-1.50,3-40-0.10]çPaulo
+```
+
+O arquivo de saída é um arquivo analítico que, ao processar as informações,
+exibirá:
+
+* O arquivo de referência
+* O total de vendedores no arquivo de entrada
+* O total de vendedores distintos no arquivo de entrada
+* O total de clientes no arquivo de entrada
+* O total de clientes distintos no arquivo de entrada
+* O ID da venda mais cara
+* O pior vendedor
+
+O arquivo analítico de saída será neste formato:
+
+```
+Arquivo de referência:                 exemplo 1.txt
+Total de vendedores na entrada:        2
+Total de vendedores distintos:         2
+Total de clientes na entrada:          2
+Total de clientes distintos:           2
+ID da venda mais cara:                 10
+Pior vendedor:                         Paulo
+```
+
 ### Pré-requisitos
 
 É necessário ter as seguintes ferramentas para inicializar o projeto localmente:
@@ -158,6 +201,8 @@ mvn test
 ## Autores
 
 * **Victor Hugo Negrisoli** - *Desenvolvedor Back-End* - [vhnegrisoli](https://github.com/vhnegrisoli)
+* [![Linkedin Badge](https://img.shields.io/badge/-victorhugonegrisoli-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/victorhugonegrisoli//)](https://www.linkedin.com/in/victorhugonegrisoli/) 
+* [![Gmail Badge](https://img.shields.io/badge/-victorhugonegrisoli.ccs@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:sakshamtaneja7861@gmail.com)](mailto:victorhugonegrisoli.ccs@gmail.com)
 
 ## Licença
 
