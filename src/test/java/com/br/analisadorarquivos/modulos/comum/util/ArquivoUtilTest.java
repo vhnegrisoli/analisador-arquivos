@@ -53,7 +53,7 @@ public class ArquivoUtilTest {
         var diretorioTeste = DIRETORIO_INICIAL.concat("/asdas1888/aa**-*198191891*");
         assertThatExceptionOfType(ValidacaoException.class)
             .isThrownBy(() -> ArquivoUtil.criarDiretorioCasoNaoExistir(diretorioTeste))
-            .withMessage("Erro ao criar diretório: Illegal char <*>"
-                + " at index 31: src/test/resources/asdas1888/aa**-*198191891*");
+            .withMessage("Erro ao criar diretório: Illegal char <*> at index 36: "
+                + "src/test/resources/data/asdas1888/aa**-*198191891*");
     }
 }

@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.br.analisadorarquivos.modulos.arquivo.mocks.ArquivoSaidaTest.umArquivoSaida;
+import static com.br.analisadorarquivos.modulos.arquivo.mocks.ArquivoSaidaMocks.umArquivoSaida;
 import static com.br.analisadorarquivos.modulos.arquivo.mocks.ClienteMocks.umCliente;
 import static com.br.analisadorarquivos.modulos.arquivo.mocks.VendaMocks.umaVenda;
 import static com.br.analisadorarquivos.modulos.arquivo.mocks.VendedorMocks.umVendedor;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-public class ArquivoSaidaTest {
+public class ArquivoSaidaMocks {
 
     @Test
     @DisplayName("Deve gerar dados do arquivo de saída quando dados estiverem válidos")

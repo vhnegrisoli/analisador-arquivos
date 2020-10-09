@@ -1,8 +1,9 @@
 package com.br.analisadorarquivos.modulos.arquivo.service;
 
 import com.br.analisadorarquivos.config.DiretoriosProperties;
-import com.br.analisadorarquivos.modulos.comum.enums.EResultadoProcessamento;
 import com.br.analisadorarquivos.modulos.arquivo.dto.ArquivoSaida;
+import com.br.analisadorarquivos.modulos.comum.enums.EResultadoProcessamento;
+import com.br.analisadorarquivos.modulos.comum.exception.ValidacaoException;
 import lombok.Cleanup;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -33,19 +34,24 @@ public class ArquivoProcessamentoService {
         System.out.println(nomeArquivo);
         var arquivo = new File(nomeArquivo);
         if (arquivo.exists()) {
-            try {
-                @Cleanup var inputStream = new FileInputStream(arquivo);
-                var reader = converterInputStreamParaBufferedReader(inputStream);
-                var dadosSaida = tratamentoService.tratarDadosDoArquivo(reader
-                    .lines()
-                    .collect(Collectors.toList()));
-                salvarArquivoSaida(dadosSaida, arquivo.getName());
-                moverParaDiretorio(nomeArquivo, PROCESSADO);
-            } catch (Exception ex) {
-                log.error("Houve um erro ao processar o arquivo ".concat(nomeArquivo), ex);
-                moverParaDiretorio(nomeArquivo, FALHA);
-            }
+            var dadosSaida = lerDadosDoArquivoDeSaida(nomeArquivo, arquivo);
+            salvarArquivoSaida(dadosSaida, arquivo.getName());
+            moverParaDiretorio(nomeArquivo, PROCESSADO);
             removerArquivoDoDiretorioDeEntrada(nomeArquivo);
+        } else {
+            throw new ValidacaoException("O arquivo ".concat(nomeArquivo).concat(" não existe no diretório."));
+        }
+    }
+
+    private ArquivoSaida lerDadosDoArquivoDeSaida(String nomeArquivo, File arquivo) {
+        try {
+            @Cleanup var inputStream = new FileInputStream(arquivo);
+            var reader = converterInputStreamParaBufferedReader(inputStream);
+            return tratamentoService.tratarDadosDoArquivo(reader.lines().collect(Collectors.toList()));
+        } catch (Exception ex) {
+            moverParaDiretorio(nomeArquivo, FALHA);
+            throw new ValidacaoException("Houve um erro ao processar o arquivo: "
+                .concat(nomeArquivo).concat(" - Erro: ").concat(ex.getMessage()));
         }
     }
 
@@ -93,7 +99,10 @@ public class ArquivoProcessamentoService {
             writter.write(dadosArquivo);
             writter.close();
         } catch (Exception ex) {
-            log.error("Erro ao escrever informações no arquivo.", ex);
+            throw new ValidacaoException("Erro ao escrever informações no arquivo "
+                .concat(arquivoReferencia)
+                .concat(" - Erro: ")
+                .concat(ex.getMessage()));
         }
     }
 }
