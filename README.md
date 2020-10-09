@@ -26,7 +26,7 @@ utilitárias, de serviços e de DTOs para armazenamento dos dados.
 * **Mockito**
 * **AssertJ**
 
-### Por quê utilizei essas tecnologias?
+### Por que utilizei essas tecnologias?
 
 O Spring Boot foi escolhido devido a toda a possibilidade de desenvolvimento
 escolhido pelo ecossistema Spring, definindo bons padrões para o projeto,
@@ -38,7 +38,7 @@ para inicialização de testes com JUnit5, para ganho de performance ao rodar te
 
 ### Como o sistema funciona?
 
-Quando abrir o projeto, na raíz, terá o diretório:
+Quando abrir o projeto, na raiz, terá o diretório:
 
 ```
 analisador-arquivos
@@ -155,6 +155,8 @@ O projeto utiliza o checkstyle da Google e o plugin PMD, sendo assim, cada coman
 Foi feito um deploy da aplicação no Travis-CI para validar o build da aplicação e a execução dos testes.
 
 A aplicação passou com 38 testes rodados com sucesso, foi adicionada a badge de `build passing` ao início deste README.
+
+O resultado do build pode ser visto [aqui](https://travis-ci.org/github/vhnegrisoli/analisador-arquivos).
 
 ### Instalação
 
