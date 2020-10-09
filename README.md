@@ -90,6 +90,8 @@ analisador-arquivos
 
 Abaixo será possível visualizar no GIF como funciona a execução do programa:
 
+![Demonstração](https://github.com/vhnegrisoli/analisador-arquivos/blob/master/imagens%20e%20gifs/Demo%20Aplica%C3%A7%C3%A3o.gif)
+
 ### Pré-requisitos
 
 É necessário ter as seguintes ferramentas para inicializar o projeto localmente:
