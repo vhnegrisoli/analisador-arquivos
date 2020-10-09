@@ -205,14 +205,14 @@ e de integração com a opção de coverage para verificar qual foi a cobertura 
 
 #### Cobertura geral
 
-![Cobertura geral]()
+![Cobertura geral](https://github.com/vhnegrisoli/analisador-arquivos/blob/master/imagens%20e%20gifs/Coverage%20Geral.png)
 
 A cobertura geral do projeto ficou em 95% de classes testadas (21 de 22 classes), 86% em métodos testados (80 de 92 métodos) 
 e 87% de llinhas testadas (280 de 319).
 
 #### Cobertura dos módulos específicos da aplicação 
 
-![Cobertura módulos]()
+![Cobertura módulos](https://github.com/vhnegrisoli/analisador-arquivos/blob/master/imagens%20e%20gifs/Coverage%20Modulos.png)
 
 A aplicação é divida em dois módulos principais, o módulo de arquivo e de comum, contendo classes utilitárias.
 O módulo de arquivo ficou com 100%"de cobertura de classes (12 de 12 classes testadas), 88% de cobertura de métodos
@@ -224,7 +224,7 @@ O módulo comum ficou com 100% de cobertura de classes (6 de 6 classes), 100% de
 
 As classes de DTOs são responsáveis por processar as linhas em dados para os objetos Java.
 
-![Cobertura DTOs]()
+![Cobertura DTOs](https://github.com/vhnegrisoli/analisador-arquivos/blob/master/imagens%20e%20gifs/Coverage%20DTOs.png)
 
 A DTO ArquivoSaida teve 100% de cobertura de classes (2 de 2 classes), 95% de cobertura de métodos (19 de 20 métodos) e 98% de cobertura
 de linhas (70 de 71 linhas).
@@ -245,7 +245,7 @@ de linhas (19 de 22 linhas).
 
 Existem duas classes service, a de processamento e tratamento de arquivos.
 
-![Cobertura Services]()
+![Cobertura Services](https://github.com/vhnegrisoli/analisador-arquivos/blob/master/imagens%20e%20gifs/Coverage%20Services.png)
 
 A classe ArquivoProcessamentoService teve 100% de cobertura de classes (1 de 1 classes), 100% de cobertura de métodos (9 de 9 métodos) e 86% de cobertura
 de linhas (45 de 52 linhas).
@@ -257,7 +257,7 @@ de linhas (18 de 18 linhas).
 
 Existem três classes utilitárias, uma de String, uma de Exception e uma de Arquivo.
 
-![Cobertura Utils]()
+![Cobertura Utils](https://github.com/vhnegrisoli/analisador-arquivos/blob/master/imagens%20e%20gifs/Coverage%20Utils.png)
 
 A classe ArquivoUtil teve 100% de cobertura de classes (1 de 1 classes), 100% de cobertura de métodos (3 de 3 métodos) e 100% de cobertura
 de linhas (11 de 11 linhas).
